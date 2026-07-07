@@ -5,6 +5,7 @@ class Habit{
     String name;
     boolean status;
     int track;
+    /* как-то добавить дату */
 
     public int getId() {
         return id;
