@@ -8,7 +8,7 @@ public class Controller {
         while (true){
             System.out.println("===Habit Tracker Menu===");
             System.out.println("1. Show all habits");
-            System.out.println("2. Tick a habit");
+            System.out.println("2. Tick a habit ");
             System.out.println("3. End session");
             Scanner scanner = new Scanner(System.in);
             int switcher = scanner.nextInt();
