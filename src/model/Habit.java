@@ -1,37 +1,24 @@
 package model;
 
 import java.time.LocalDate;
+import java.util.UUID;
 
 public class Habit{
-    private int id;
+    private String id;
     private String name;
-    private boolean status = false;
-    /* как-то сделать статус для каждого дня в отдельности*/
-    private int track = 0;
-    private LocalDate start = LocalDate.now();
+    private String description;
+    private LocalDate createdAt = LocalDate.now();
+    /*как реализовать поле HabitRecords*/
 
-    public int getId() {
-        return id;
-    }
-
-    public void setName(String name) {
+    public Habit(String name, String description){
+        this.id = UUID.randomUUID().toString();
         this.name = name;
+        this.description = description;
     }
 
     public String getName() {
         return name;
     }
 
-    public void setStatus(boolean status) {
-        this.status = status;
-    }
-    public int getTrack(){
-        return LocalDate.now().compareTo(start)+1;
-    }
-    public LocalDate getStart(){
-        return start;
-    }
-    public void setStart(LocalDate start){
-        this.start = start;
-    }
+
 }
