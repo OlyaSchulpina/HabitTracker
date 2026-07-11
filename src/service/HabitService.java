@@ -1,27 +1,46 @@
 package service;
 
 import model.Habit;
+import repository.HabitRepository;
 
-import java.util.List;
+import java.util.Map;
 
 public class HabitService {
 
-    public void addHabit(List<Habit> habits, Habit habit){
-        habits.add(habit);
+    private final HabitRepository repo;
+
+    public HabitService(HabitRepository repo) {
+        this.repo = HabitRepository.getInstance(repo);
     }
-    public List<Habit> getHabits(List<Habit> habits){
-        return habits;
+
+
+    public void addHabit(String name, String description){
+        Habit habit = new Habit();
+        habit.setName(name);
+        habit.setDescription(description);
+        repo.addHabit(habit);
     }
-    /* как-то реализовать update */
-    public void deleteHabit(List<Habit> habits, Habit habit){
-        String habitName = habit.getName();
-        int habitIndex = 0;
-        for (int i = 0; i < habits.toArray().length; i++){
-            Habit arrHabit = habits.get(i);
-            if (arrHabit.getName().equals(habitName)){
-                habitIndex = i;
-            }
-        }
-        habits.remove(habitIndex);
+
+    public Map<Long, Habit> getAllHabit(){
+        return repo.getHabits();
+    }
+
+    public Habit getHabitById(long id){
+        return repo.searchById(id);
+    }
+
+    public Habit getHabitNyName(String name){
+        return repo.searchByName(name);
+    }
+
+    public void updateHabit(long id, String name, String description){
+        Habit habit = repo.searchById(id);
+        habit.setName(name);
+        habit.setDescription(description);
+        repo.updateHabit(id,habit);
+    }
+
+    public void deleteHabit(long id){
+        repo.deleteHabit(id);
     }
 }
