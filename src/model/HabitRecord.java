@@ -1,14 +1,30 @@
 package model;
 
 import java.time.LocalDate;
-import java.util.UUID;
 
 public class HabitRecord {
-    private String id;
-    private String habitId;
+    private long id;
+    private long habitId;
     private LocalDate doneDate;
 
-    public HabitRecord(){
-        this.id = UUID.randomUUID().toString();
+    public HabitRecord(long habitId, LocalDate doneDate){
+        this.habitId = habitId;
+        this.doneDate = doneDate;
+    }
+    public HabitRecord(long id, long habitId, LocalDate doneDate){
+        this.id = id;
+        this.habitId = habitId;
+        this.doneDate = doneDate;
+    }
+    public long getId(){
+        return id;
+    }
+
+    public long getHabitId(){
+        return habitId;
+    }
+
+    public LocalDate getDoneDate(){
+        return doneDate;
     }
 }

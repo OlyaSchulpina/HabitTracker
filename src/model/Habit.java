@@ -1,7 +1,6 @@
 package model;
 
 import java.time.LocalDate;
-import java.util.UUID;
 
 public class Habit{
     private long id;
