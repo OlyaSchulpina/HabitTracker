@@ -7,7 +7,7 @@ public class Habit{
     private String name;
     private String description;
     private LocalDate createdAt = LocalDate.now();
-    /*как реализовать поле HabitRecords*/
+    private int streak;
 
 
 
@@ -20,7 +20,15 @@ public class Habit{
     public void setId(long id) {
         this.id = id;
     }
-
+    public void incrementStreak(){
+        streak++;
+    }
+    public int getStreak(){
+        return streak;
+    }
+    public void setStreak(int streak){
+        this.streak = streak;
+    }
 
     public void setDescription(String description) {
         this.description = description;

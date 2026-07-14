@@ -24,7 +24,7 @@ public class HabitRecord {
         return habitId;
     }
 
-    public LocalDate getDoneDate(){
+    public LocalDate getDoneDate(long id){
         return doneDate;
     }
 }

@@ -1,14 +1,21 @@
 package repository;
 
 import model.Habit;
+import model.HabitRecord;
 
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicLong;
 
 public class HabitRepository {
     private final Map<Long, Habit> habits = new HashMap<>();
     private final AtomicLong idGenerator = new AtomicLong(1);
+
+    private final Map<Long, List<HabitRecord>> records = new HashMap<>();
+    private final AtomicLong idRecordGenerator = new AtomicLong(1);
 
     private HabitRepository(){}
 
@@ -23,6 +30,7 @@ public class HabitRepository {
         long newId = idGenerator.getAndIncrement();
         habit.setId(newId);
         habits.put(newId,habit);
+        records.put(newId, new ArrayList<>());
     }
     /* выбросить исключение, когда id не существует */
     public Habit searchById(long id){
@@ -50,5 +58,12 @@ public class HabitRepository {
     public void deleteHabit(long id){
         habits.remove(id);
     }
-
+    public List<HabitRecord> getAllRecords(long id){
+        return records.get(id);
+    }
+    public void addRecord(long id, LocalDate date){
+        List<HabitRecord> recordList = getAllRecords(id);
+        HabitRecord habitRecord = new HabitRecord(id, date);
+        recordList.add(habitRecord);
+    }
 }
