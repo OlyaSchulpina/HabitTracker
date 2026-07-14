@@ -10,7 +10,7 @@ public class HabitService {
     private final HabitRepository repo;
 
     public HabitService(HabitRepository repo) {
-        this.repo = HabitRepository.getInstance(repo);
+        this.repo = repo;
     }
 
 

@@ -11,6 +11,8 @@ import java.util.Map;
 import java.util.concurrent.atomic.AtomicLong;
 
 public class HabitRepository {
+    private static HabitRepository instance;
+
     private final Map<Long, Habit> habits = new HashMap<>();
     private final AtomicLong idGenerator = new AtomicLong(1);
 
@@ -19,7 +21,7 @@ public class HabitRepository {
 
     private HabitRepository(){}
 
-    public static HabitRepository getInstance(HabitRepository instance){
+    public static HabitRepository getInstance(){
         if (instance==null){
             instance = new HabitRepository();
         }

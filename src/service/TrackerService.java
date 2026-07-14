@@ -12,7 +12,7 @@ public class TrackerService {
     LocalDate today = LocalDate.now();
 
     public TrackerService(HabitRepository repo) {
-        this.repo = HabitRepository.getInstance(repo);
+        this.repo = repo;
     }
 
     public void markHabitDone(long id){
